@@ -8,7 +8,7 @@ import os.path
 # Load pre_trained Deepten model
 nclass = 47
 model = DeepTen(nclass,'resnet50')
-model.load_state_dict(torch.load('model4.pt',map_location='cpu'),False)
+model.load_state_dict(torch.load('model.pth',map_location='cpu'),False)
 model.eval()
 # Load and preprocess input image
 image_path = '/home/tangb_lab/cse30011373/jiays/dataSet/dtd/images/banded/banded_0139.jpg'
