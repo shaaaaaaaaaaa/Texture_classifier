@@ -3,6 +3,7 @@ from torchvision import transforms
 import torch.nn.functional as F
 from encoding.models.deepten import DeepTen
 from PIL import Image
+import os.path
 
 # Load pre_trained Deepten model
 nclass = 47
@@ -32,6 +33,7 @@ probabilities = F.softmax(output[0],dim=0)
 texture_list = ["banded","blotchy","braided","bubbly","bumpy","chequered","cobwebbed","cracked","crosshatched","crystalline","dotted","fibrous","flecked","freckled","frilly","gauzy","grid","grooved","honeycombed","interlaced","knitted","lacelike","lined","marbled","matted","meshed","paisley","perforated","pitted","pleated","polka-dotted","porous","potholed","scaly","smeared","spiralled","sprinkled","stained","stratified","striped","studded","swirly","veined","waffled","woven","wrinkled","zigzagged"]
 print(probabilities)
 top_prob, top_catid = torch.topk(probabilities,5)
-print(top_catid)
+print('image:' + os.path.basename(image_path))
+print('predict:')
 for i in range(5):
-    print(texture_list[top_catid[i]])
+    print('      ' + texture_list[top_catid[i]])
